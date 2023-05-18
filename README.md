@@ -1,6 +1,6 @@
 # Rails Challenges
 This repository holds the Rails pair programming challenges for the 2023 Charlie cohort.  
-***NOTE: Rails applications will not be pushed to this repo. The work from the challenges will be saved as markdown files that include the the team members' names.***
+***NOTE: Rails applications will not be pushed to this repo. The work from the challenges will be saved as markdown files that include the team members' names.***
 
 ### Process Notes
 - Anything wrapped in < > is an indication that this will be named uniquely, the < > are NOT included in the command
