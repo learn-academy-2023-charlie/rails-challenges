@@ -1,4 +1,4 @@
-5/19/23 Active Record Associations Bea and CRod pair programming
+5/19/23 Active Record Associations
 
 Banking Challenge
 
@@ -74,6 +74,5 @@ Then enter the following command in rails console.
 ```
 Output will be the total of the credit_limit values 
     //output: 26000
-
 
    
