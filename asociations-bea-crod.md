@@ -46,16 +46,25 @@ A credit card has a number, an expiration date, and an owner
     rails db:migrate
 ```
 
-    Then in the AddColumnCreditLimitToCreditCard file add:
+Then in the AddColumnCreditLimitToCreditCard.rb file add:
 ```
     add_column :credit_cards, :credit_limit, :integer
 
 ```
-    Then in rails console set each card as a variable and updated the credit limit 
-    example
+Then in rails console set each card as a variable and updated the credit limit 
+example as follows:
 ```
     card2.update(credit_limit: 6000)
 
 ```
 ##Find the total credit extended to the owner with multiple credit cards
 ```
+    crod_cc = crod.credit_cards <--set a variable to see all credit cards one person has.
+```
+Then enter the following command in rails console. 
+```
+    crod_cc.sum(:credit_limit)
+```
+to see the total credit extended
+
+   
