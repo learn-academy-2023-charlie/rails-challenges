@@ -1,6 +1,6 @@
 # Validations Challenges
 Create a Rails application called company_contacts. The app will have a PostgreSQL database.✅
--   $ rails new company_contacts -d postgreql -T
+-   $ rails new company_contacts -d postgresql -T
 
 Generate a model called Account that has a username, a password, and an email.✅
 -   $ rails g model Account user_name:string email:string password:string
@@ -60,8 +60,20 @@ As a developer, I need each password to be at least 6 characters long.✅
         end
 
 As a developer, I need each password to be unique.
+-   account.rb
+    *   validates :password, uniqueness: true
+
+-   account_spec.rb
+    *   it 'The password needs to be unique' do
+          Account.create(user_name: 'yuehan', email: 'yuehan@gmail.com', password: '1234567')
+          yuehan123 = Account.create(user_name: 'justin', email: 'justin@gmail.com', password: '1234567')
+          expect(yuehan123.errors[:password]).to_not be_empty
+        end
+
 As a developer, I want my Account model to have many associated Addresses.
+
 As a developer, I want Address to have street_number, street_name, city, state, and zip attributes. The street_number and zip should be integers.
+
 As a developer, I want to validate the presence of all fields on Address.
 
 # Stretch Challenges
@@ -75,6 +87,8 @@ HINT: Read about numericality in the Active Record validation docs.
 As a developer, I want to see a custom error message that says "Please, input numbers only" if street_number or zip code are not numbers.
 HINT: Read about message in the validation docs.
 
+
+-------------------------------------------------
 account.rb 
 class Account < ApplicationRecord
     validates :user_name, :password, :email, presence: true
