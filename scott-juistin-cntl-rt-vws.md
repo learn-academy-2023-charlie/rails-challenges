@@ -56,9 +56,63 @@ end
 
 
 
-Params
+## Params
 
-As a user, I can visit a page called cubed that takes a number as a param and displays that number cubed.
-As a user, I can visit a page called evenly that takes two numbers as params and displays whether or not the first number is evenly divisible by the second.
-As a user, I can visit a page called palindrome that takes a string as a param and displays whether it is a palindrome (the same word forward and backward).
-As a user, I can visit a page called madlib that takes params of a noun, verb, adjective, adverb, and displays a short silly story.
+### As a user, I can visit a page called cubed that takes a number as a param and displays that number cubed. ✅
+-   Bash: http://localhost:3000/cubed?number=5
+
+-   main_controller:
+def cubed
+        @number = params[:number].to_i ** 3
+    end
+
+-   cubed.html.erb
+<h2> <%= @number %> </h2>
+
+-   routes.rb
+ get '/cubed' => 'main#cubed'
+
+### As a user, I can visit a page called evenly that takes two numbers as params and displays whether or not the first number is evenly divisible by the second.✅
+-   Bash: http://localhost:3000/evenly?number1=24&number2=6
+
+-   main_controller:
+ def evenly
+        @number1 = params[:number1].to_i
+        @number2 = params[:number2].to_i
+    
+        if @number2.zero?
+          @result_string = "Cannot divide by zero"
+        elsif (@number1 % @number2).zero?
+          @result_string = "#{@number1} is evenly divisible by #{@number2}"
+        else
+          @result_string = "#{@number1} is not evenly divisible by #{@number2}"
+        end
+      end
+
+-   evenly.html.erb:
+<%= @result_string %>
+
+-   routes.rb:
+get '/evenly', to: 'main#evenly'
+
+### As a user, I can visit a page called palindrome that takes a string as a param and displays whether it is a palindrome (the same word forward and backward).✅
+-   Bash: http://localhost:3000/palindrome?string=racecar
+
+-   main_controller:
+def palindrome
+        @string = params[:string]
+
+        if @string == @string.reverse
+            @palindrome_string = "#{@string} is a palindrome"
+        else
+            @palindrome_string = "#{@string} is not a palindrome"
+        end
+    end
+
+-   palindrome.html.erb:
+<h1> <%= @palindrome_string %> </h1>
+
+-   routes.rb:
+get '/palindrome', to: 'main#palindrome'
+
+### As a user, I can visit a page called madlib that takes params of a noun, verb, adjective, adverb, and displays a short silly story.
